@@ -1,0 +1,75 @@
+<DATAFILE>
+
+[FILEINFO]
+file={path='Data_MCF7_wo_CAF2_high_med_low.txt'}
+delimiter = tab
+header={id, time, y, ytype}
+
+[CONTENT]
+id = {use=identifier}
+time = {use=time}
+y = {use=observation, yname={'1', '2'}, type={continuous, continuous}}
+ytype = {use=observationtype}
+
+<MODEL>
+
+[INDIVIDUAL]
+input = {alpha1_pop, omega_alpha1, beta_pop, omega_beta, db_pop, omega_db, k1_hat_pop, omega_k1_hat, E2ER0_pop, ER0_pop, omega_ER0, omega_E2ER0}
+
+DEFINITION:
+alpha1 = {distribution=logNormal, typical=alpha1_pop, sd=omega_alpha1}
+beta = {distribution=logNormal, typical=beta_pop, sd=omega_beta}
+db = {distribution=logNormal, typical=db_pop, sd=omega_db}
+k1_hat = {distribution=logNormal, typical=k1_hat_pop, sd=omega_k1_hat}
+E2ER0 = {distribution=logNormal, typical=E2ER0_pop, sd=omega_E2ER0}
+ER0 = {distribution=logNormal, typical=ER0_pop, sd=omega_ER0}
+
+[LONGITUDINAL]
+input = {a1, b1, a2, b2}
+
+file = 'Model_MCF7_wo_CAF2_high_med_low.txt'
+
+DEFINITION:
+y1 = {distribution=normal, prediction=T1, errorModel=combined1(a1, b1)}
+y2 = {distribution=normal, prediction=ER1, errorModel=combined1(a2, b2)}
+
+<FIT>
+data = {'1', '2'}
+model = {y1, y2}
+
+<PARAMETER>
+E2ER0_pop = {value=1, method=MLE}
+ER0_pop = {value=0.6, method=MLE}
+a1 = {value=1, method=MLE}
+a2 = {value=1, method=MLE}
+alpha1_pop = {value=1, method=MLE}
+b1 = {value=0.3, method=MLE}
+b2 = {value=0.3, method=MLE}
+beta_pop = {value=1, method=MLE}
+c1 = {value=1, method=FIXED}
+c2 = {value=1, method=FIXED}
+db_pop = {value=1, method=MLE}
+k1_hat_pop = {value=0.5, method=MLE}
+omega_E2ER0 = {value=1, method=MLE}
+omega_ER0 = {value=1, method=MLE}
+omega_alpha1 = {value=1, method=MLE}
+omega_beta = {value=1, method=MLE}
+omega_db = {value=1, method=MLE}
+omega_k1_hat = {value=1, method=MLE}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = {conditionalMean, conditionalMode })
+fim(run = false,method = StochasticApproximation)
+logLikelihood(run = false,method = ImportanceSampling)
+
+[PLOTS]
+run = true
+plots = {indfits = {selected = true}, parameterdistribution = {selected = true}, obspred = {selected = true}, covariancemodeldiagnosis = {selected = true}, covariatemodeldiagnosis = {selected = true}, vpc = {selected = true}, residualsscatter = {selected = true}, residualsdistribution = {selected = true}, randomeffects = {selected = true}, saemresults = {selected = true}}
+
+[SETTINGS]
+GLOBAL:
+exportpath = 'Model_wo_CAF_high_med_low'
+

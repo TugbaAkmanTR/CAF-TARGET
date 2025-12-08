@@ -1,0 +1,132 @@
+********************************************************************************
+*                      Model_wo_CAF_high_med_low.mlxtran                       *
+*                      December 08, 2025 at 14:41:44                           *
+*                      Monolix version : 2024R1                                *
+********************************************************************************
+
+
+ESTIMATION OF THE POPULATION PARAMETERS ________________________________________
+
+Fixed Effects ----------------------------     se_sa    rse(%)   P2.5_sa  P97.5_sa
+k1_hat_pop   :                      0.0425    0.0105      24.8    0.0266    0.0677
+alpha1_pop   :                       0.357  1.25e+03  3.51e+05   0.00132      96.5
+beta_pop     :                        4.47  6.66e+31  1.49e+33  2.75e-07  7.28e+07
+db_pop       :                      0.0389  3.72e+41  9.57e+44  1.32e-10  1.14e+07
+ER0_pop      :                     0.00565       nan         0       nan       nan
+E2ER0_pop    :                    0.000563       inf       inf         0  9.39e+12
+
+Standard Deviation of the Random Effects -
+omega_k1_hat :                       0.341     0.221      64.6     0.122     0.955
+omega_alpha1 :                       0.413       5.7  1.38e+03    0.0169      10.1
+omega_beta   :                        2.34       nan         0       nan       nan
+omega_db     :                        1.11      3.71       334     0.113      10.9
+omega_ER0    :                        4.08        37       908     0.214      77.7
+omega_E2ER0  :                        4.09         8       196     0.621      26.9
+
+Error Model Parameters -------------------
+a1           :                       0.845     0.181      21.5     0.562      1.27
+b1           :                       0.456     0.128        28     0.271     0.767
+a2           :                     1.2e-05       nan         0       nan       nan
+b2           :                       0.801     0.713      89.1     0.225      2.85
+
+Elapsed time (seconds):      7.1
+Exploratory phase iterations:      150 (Autostop)
+Smoothing phase iterations:        200 (Stopped at the maximum number of iterations)
+
+ _______________________________________________________________________________
+
+
+
+ESTIMATION OF THE INDIVIDUAL PARAMETERS ________________________________________
+
+
+Estimation of the individual parameters by Conditional Distribution ------------
+                   min            Q1        median            Q3           max  shrinkage(%)
+k1_hat :        0.0233        0.0346        0.0388        0.0583        0.0712          1.76
+alpha1 :         0.358         0.378         0.384         0.391         0.412          91.6
+beta   :        0.0883          24.5          40.8          60.2           130          30.7
+db     :        0.0505        0.0589        0.0671        0.0728         0.133          79.7
+ER0    :          1.14          3.06          5.74          24.8          46.3          83.3
+E2ER0  :        0.0965         0.337         0.837          1.69          4.15          72.5
+
+Elapsed time (seconds):       29
+Iterations:     1353 (Autostop)
+
+ -------------------------------------------------------------------------------
+
+
+Estimation of the individual parameters by Conditional Mode --------------------
+                   min            Q1        median            Q3           max  shrinkage(%)
+k1_hat :        0.0231        0.0352        0.0401        0.0598        0.0737         -2.47
+alpha1 :         0.275         0.351         0.361          0.37         0.388          80.9
+beta   :         0.041          1.27          3.06          4.53          16.5            41
+db     :        0.0137        0.0273        0.0309        0.0321         0.202          49.7
+ER0    :       0.00242       0.00416        0.0055       0.00563         0.123          78.6
+E2ER0  :      0.000372       0.00049      0.000557      0.000642       0.00676          83.1
+
+Elapsed time (seconds):     0.11
+
+ -------------------------------------------------------------------------------
+
+ _______________________________________________________________________________
+
+
+
+ESTIMATION OF THE FISHER INFORMATION MATRIX ____________________________________
+
+
+Estimation of the Fisher information matrix by Stochastic Approximation --------
+
+Correlation Matrix :
+  k1_hat_pop         1
+  alpha1_pop   0.83986         1
+    beta_pop   0.87266    0.9627         1
+      db_pop  -0.90348  -0.91112  -0.97591         1
+     ER0_pop       nan       nan       nan       nan       nan
+   E2ER0_pop   0.82667    0.9455   0.96037  -0.92629       nan         1
+omega_k1_hat  -0.81784  -0.92924  -0.93839   0.90859       nan  -0.92923         1
+omega_alpha1   0.88703   0.96192   0.99228  -0.97996       nan   0.95882  -0.94049         1
+  omega_beta       nan       nan       nan       nan       nan       nan       nan       nan       nan
+    omega_db  -0.88752  -0.86854  -0.93298   0.97344       nan  -0.89864   0.87288  -0.93755       nan         1
+   omega_ER0  -0.88337   -0.9681  -0.98674   0.96913       nan  -0.96989   0.94405  -0.99168       nan   0.93959         1
+ omega_E2ER0   0.86012   0.80347   0.89233  -0.94789       nan   0.80328  -0.82012   0.90063       nan  -0.94029  -0.88912         1
+          a1  -0.23627  -0.18578  -0.19189   0.22863       nan  -0.15435   0.18104   -0.2047       nan   0.23741   0.20777  -0.26129         1
+          b1   -0.8377  -0.87478  -0.92128   0.92317       nan  -0.89826   0.86557  -0.92436       nan   0.89663   0.91831   -0.8505 -0.059488         1
+          a2       nan       nan       nan       nan       nan       nan       nan       nan       nan       nan       nan       nan       nan       nan       nan
+          b2   0.48511   0.48857   0.52482  -0.54509       nan   0.49209  -0.48522   0.51322       nan  -0.55144   -0.5113   0.53085  -0.12505  -0.49294       nan         1
+
+WARNING : Impossible to compute the eigen values of the correlation matrix.
+
+Elapsed time (seconds):      3.1
+Iterations:      200 (Stopped at the maximum number of iterations/Fisher matrix was not correctly estimated)
+
+ -------------------------------------------------------------------------------
+
+ _______________________________________________________________________________
+
+
+
+ESTIMATION OF THE LOG-LIKELIHOOD _______________________________________________
+
+                                                            (is)
+-2 x log-likelihood                       (OFV) :        1770.44
+Akaike Information Criteria               (AIC) :        1802.44
+Corrected Bayesian Information Criteria  (BICc) :        1842.71
+Bayesian Information Criteria             (BIC) :        1813.77
+
+Elapsed time                          (seconds) :           2.61
+CPU time                              (seconds) :           2.00
+MonteCarlo size (is):    10000 (Fixed number of iterations)
+
+
+[Importance Sampling] Standard error        : 0.159
+                      Sampling distribution : T-distribution with 5 degrees of freedom
+
+ _______________________________________________________________________________
+
+DATASET INFORMATION
+Number of individuals: 15
+Number of observations (obsid 1): 270
+Number of observations (obsid 2): 1
+Number of doses: 0
+

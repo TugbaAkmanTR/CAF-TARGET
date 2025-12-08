@@ -1,0 +1,2 @@
+id,time,y2,popPred_medianCOV,popPred,indivPred_SAEM,indivPred_mean,indivPred_mode,indWRes_SAEM,indWRes_mean,indWRes_mode
+111,124,0.6,417.255,417.255,5.04057,9.54624,3.64614,-1.10022,-1.17038,-1.04336

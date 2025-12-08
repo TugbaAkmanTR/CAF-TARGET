@@ -1,0 +1,7 @@
+parameter,statistics,p-value,test
+k1_hat,0.949706,0.674146,Shapiro-Wilk
+alpha1,0.955233,0.561589,Shapiro-Wilk
+beta,0.912829,0.0173778,Shapiro-Wilk
+db,0.941103,0.137911,Shapiro-Wilk
+ER0,0.953785,0.941,Shapiro-Wilk
+E2ER0,0.957858,0.983595,Shapiro-Wilk
