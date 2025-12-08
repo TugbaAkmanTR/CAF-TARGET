@@ -16,3 +16,21 @@ ode = @ODEmodel(
 
 println(assess_identifiability(ode,known_ic=[x1,x4,x7]))
 #println(assess_identifiability(ode,known_ic=[x1,x2,x3,x4,x5,x6,x7,x8,x9]))
+
+# Result
+# Info: Assessing identifiability with known initial conditions concluded in 0.5816821 seconds
+#OrderedCollections.OrderedDict{Nemo.QQMPolyRingElem, Symbol}(
+#x1(0) => :globally, 
+#x2(0) => :globally, 
+#x3(0) => :globally, 
+#x4(0) => :globally, 
+#x5(0) => :nonidentifiable, 
+#x6(0) => :nonidentifiable, 
+#x7(0) => :globally, 
+#x8(0) => :nonidentifiable, 
+#x9(0) => :nonidentifiable, 
+#alpha1 => :globally, 
+#beta => :globally, 
+#db => :globally, 
+#k1_hat => :globally)
+
