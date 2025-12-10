@@ -86,7 +86,7 @@ y_data_with_CAF2_high_dose = [y_data_with_CAF2_high_dose_mice1; y_data_with_CAF2
 %Initial conditions
 E2 = 0.5;
 
-toll = 1e-1;
+toll = 1e-5;
 init_Tumor = 0.5;
 init_ER = 2.2e-05;
 init_E2ER = 5.4e-08;
@@ -128,9 +128,7 @@ for i=1:1 % 5 mice
     dt = (tf-t0)/Interval; % Temporal increment
     Tu=t0:(1*dt):tf;        % ınterpolation points
     
-    Eq.time_E2_supply_ends = find(Tu==60);
     
-
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %Uncontrolled case - No treatment
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -158,7 +156,7 @@ for i=1:1 % 5 mice
     
     % Time discretization for intervention
     %index_treatment(i) = min(find(MCF7_with_CAF2_high_dose(:,i) >= Eq.threshold(i) ))
-    index_treatment(i) = min(find(Tu == t_data_high_dose(first_nonzero_idx) ))
+    index_treatment(i) = min(find(Tu == 45))
     t0_treatment = Tu(index_treatment(i))
     
     %index_treatment(i) = first_nonzero_idx;
@@ -243,7 +241,7 @@ for i=1:1 % 5 mice
         
         
         % Optimality condition
-        optCond1 = (Eq.k1.*lambda4.*x4.*(1-Eq.m2*x4).*x1.*(1./(Eq.alpha3 + x1)))/Eq.weight1;
+        optCond1 = ((Eq.k1/3).*lambda4.*x4.*(1-Eq.m2*x4).*x1.*(1./(Eq.alpha3 + x1)))/Eq.weight1;
         %optCond2 = (lambda1.*Eq.k3.*x1.*(1-Eq.m1*x1).*x4.*(1./(Eq.alpha3+x4)))/Eq.weight2;
         %optCond3 = (lambda3-lambda2).*Eq.db.*E2.*x2/Eq.weight3;
         
@@ -652,7 +650,7 @@ for i=1:1 % 5 mice
         
         
         % Optimality condition
-        optCond1 = (Eq.k1*lambda4.*x4.*(1-Eq.m2*x4).*x1.*(1./(Eq.alpha3 + x1)))/Eq.weight1;
+        optCond1 = ((Eq.k1/3)*lambda4.*x4.*(1-Eq.m2*x4).*x1.*(1./(Eq.alpha3 + x1)))/Eq.weight1;
         %optCond2 = (lambda1.*Eq.k2.*x1.*(1-Eq.m1*x1).*x4.*(1./(Eq.alpha2+x4)))/Eq.weight2;
         optCond3 = (lambda3-lambda2).*Eq.db.*E2.*x2/Eq.weight3;
 
@@ -899,7 +897,7 @@ for i=1:1 % 5 mice
     ylabel('u_2(t), u_3(t)')
     xlim([24,tf])
     ylim([0,1])
-    title(sprintf('ID  %d', i));
+    %title(sprintf('ID  %d', i));
     %xline(t0_treatment_CD,'--k','HandleVisibility','off')
     
     %figure(630+i)
@@ -913,7 +911,7 @@ for i=1:1 % 5 mice
     ylabel('u_1(t)')
     xlim([24,tf])
     ylim([0,1])
-    title(sprintf('ID  %d', i));
+    %title(sprintf('ID  %d', i));
     %xline(t0_treatment_CD,'--k','HandleVisibility','off')
     
     %figure(730+i)
@@ -927,7 +925,7 @@ for i=1:1 % 5 mice
     ylabel('u_2(t)')
     xlim([24,tf])
     ylim([0,1])
-    title(sprintf('ID  %d', i));
+    %title(sprintf('ID  %d', i));
     %xline(t0_treatment_CD,'--k','HandleVisibility','off')
     
     %figure(830+i)
