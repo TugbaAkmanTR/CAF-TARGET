@@ -1,0 +1,67 @@
+
+
+[LONGITUDINAL]
+input = {k2, alpha2, d3, alpha3}
+
+EQUATION:
+
+;initial conditions:
+t_0 = 0    ;this should be uncommented if the initial time is 0 for all subjects
+T1_0 = 0.5
+ER1_0 = 2.2e-05
+E2ER1_0 = 5.4e-08
+CAF21_0 = 1.5
+T2_0 = 0.5
+ER2_0 = 2.2e-05
+E2ER2_0 = 5.4e-08
+CAF22_0 = 1.5
+T3_0 = 0.5
+ER3_0 = 2.2e-05
+E2ER3_0 = 5.4e-08
+CAF23_0 = 1.5
+
+k1_hat = 0.04413
+alpha1 = 0.001147
+beta = 0.0072
+db = 0.23
+
+;E2 is given for 60 days
+if t<=60
+;Low E2
+  RHS12 = beta*(1/(1+d3*CAF21)) - 0.0042*ER1 - db*0.5*ER1 + 0.0417*E2ER1
+  RHS13 = -0.0125*E2ER1 + db*0.5*ER1 - 0.0417*E2ER1
+  ;Med E2
+  RHS16 = beta*(1/(1+d3*CAF22)) - 0.0042*ER2 - db*0.1*ER2 + 0.0417*E2ER2
+  RHS17 = -0.0125*E2ER2 + db*0.1*ER2 - 0.0417*E2ER2
+  ;High E2
+  RHS20 = beta*(1/(1+d3*CAF23)) - 0.0042*ER3 - db*0.025*ER3 + 0.0417*E2ER3
+  RHS21 = -0.0125*E2ER3 + db*0.025*ER3 - 0.0417*E2ER3
+else
+;Low E2
+  RHS12 = beta*(1/(1+d3*CAF21)) - 0.0042*ER1 - db*0*ER1 + 0.0417*E2ER1
+  RHS13 = -0.0125*E2ER1 + db*0*ER1 - 0.0417*E2ER1
+    ;Med E2
+  RHS16 = beta*(1/(1+d3*CAF22)) - 0.0042*ER2 - db*0*ER2 + 0.0417*E2ER2
+  RHS17 = -0.0125*E2ER2 + db*0*ER2 - 0.0417*E2ER2
+  ;High E2
+   RHS20 = beta*(1/(1+d3*CAF23)) - 0.0042*ER3 - db*0*ER3 + 0.0417*E2ER3
+  RHS21 = -0.0125*E2ER3 + db*0*ER3 - 0.0417*E2ER3
+end
+
+ddt_T1 = T1*(1-(0.001*T1))*(k1_hat*(E2ER1/(alpha1 + E2ER1)) + k2*(CAF21/(alpha2 + CAF21)))
+ddt_ER1 = RHS12
+ddt_E2ER1 = RHS13
+ddt_CAF21 = (k1_hat/3)*CAF21*(1-(0.001*CAF21))*(T1/(alpha3 + T1))
+
+ddt_T2 = T2*(1-(0.001*T2))*(k1_hat*(E2ER2/(alpha1 + E2ER2)) + k2*(CAF22/(alpha2 + CAF22)))
+ddt_ER2 = RHS16
+ddt_E2ER2 = RHS17
+ddt_CAF22 = (k1_hat/3)*CAF22*(1-(0.001*CAF22))*(T2/(alpha3 + T2))
+
+ddt_T3 = T3*(1-(0.001*T3))*(k1_hat*(E2ER3/(alpha1 + E2ER3)) + k2*(CAF23/(alpha2 + CAF23)))
+ddt_ER3 = RHS20
+ddt_E2ER3 = RHS21
+ddt_CAF23 = (k1_hat/3)*CAF23*(1-(0.001*CAF23))*(T3/(alpha3 + T3))
+
+OUTPUT:
+output = {T1, ER1, E2ER1,CAF21,T2, ER2, E2ER2,CAF22,T3, ER3, E2ER3,CAF23}

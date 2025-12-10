@@ -1,0 +1,78 @@
+********************************************************************************
+*                     Model_with_CAF_high_med_low.mlxtran                      *
+*                      at                                                      *
+*                     Monolix version : 2024R1                                 *
+********************************************************************************
+
+
+ESTIMATION OF THE POPULATION PARAMETERS ________________________________________
+
+Fixed Effects ----------------------------
+k2_pop       :                       0.157
+alpha2_pop   :                          13
+d3_pop       :                        49.2
+alpha3_pop   :                    4.96e-05
+
+Standard Deviation of the Random Effects -
+omega_k2     :                       0.418
+omega_alpha2 :                       0.181
+omega_d3     :                        1.05
+omega_alpha3 :                        13.6
+
+Error Model Parameters -------------------
+a1           :                        1.55
+b1           :                       0.259
+a2           :                       0.493
+b2           :                    2.22e-16
+a3           :                         1.4
+b3           :                       0.192
+a4           :                        1.57
+b4           :                       0.243
+
+Elapsed time (seconds):      3.8
+Exploratory phase iterations:      181 (Autostop)
+Smoothing phase iterations:        137 (Autostop)
+
+ _______________________________________________________________________________
+
+
+
+ESTIMATION OF THE INDIVIDUAL PARAMETERS ________________________________________
+
+
+Estimation of the individual parameters by Conditional Distribution ------------
+                   min            Q1        median            Q3           max  shrinkage(%)
+k2     :         0.101         0.122         0.165         0.209         0.281          20.7
+alpha2 :          11.9          12.9          13.3          13.6          14.1          75.1
+d3     :          21.7          31.8          79.5           123           375          19.9
+alpha3 :        0.0147        0.0502      9.11e+06      1.33e+12      3.17e+16            31
+
+Elapsed time (seconds):       16
+Iterations:     1662 (Autostop)
+
+ -------------------------------------------------------------------------------
+
+
+Estimation of the individual parameters by Conditional Mode --------------------
+                   min            Q1        median            Q3           max  shrinkage(%)
+k2     :        0.0812         0.117         0.174         0.206          0.27          7.56
+alpha2 :          11.7          12.6            13          13.5          13.8          74.5
+d3     :          15.8            21          43.6            93           281          16.5
+alpha3 :      4.54e-05       4.9e-05         5e-05       5.2e-05           200          55.3
+
+Elapsed time (seconds):    0.046
+
+ -------------------------------------------------------------------------------
+
+ _______________________________________________________________________________
+
+
+
+DATASET INFORMATION
+Number of individuals: 15
+Number of observations (obsid 1): 85
+Number of observations (obsid 2): 5
+Number of observations (obsid 3): 105
+Number of observations (obsid 4): 80
+Number of doses: 0
+
