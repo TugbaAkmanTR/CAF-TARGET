@@ -978,7 +978,7 @@ end
       'LabelVerticalAlignment', 'middle', 'LineWidth', 1);
     legend('No treatment','Treatment - Type I','Treatment - Type II','Treatment - Type III','Treatment - Type I+III', 'Treatment - Type II+III','location', 'northwest',  'FontSize', 10)
     %title('T(t)','fontweight','normal','fontsize',18)
-    sgtitle('Medium dose E2 (0.5mg) (with CAF)','fontsize',18)
+    sgtitle('Optimal teeatment - Medium dose E2 (0.5mg)','fontsize',18)
     xlabel('t','fontweight','normal','fontsize',18)
     ylabel('T(t)','fontweight','normal','fontsize',18)
     grid on

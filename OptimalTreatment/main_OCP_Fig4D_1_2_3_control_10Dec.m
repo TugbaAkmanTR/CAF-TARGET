@@ -241,7 +241,7 @@ for i=1:1 % 5 mice
         
         
         % Optimality condition
-        optCond1 = ((Eq.k1/3).*lambda4.*x4.*(1-Eq.m2*x4).*x1.*(1./(Eq.alpha3 + x1)))/Eq.weight1;
+        optCond1 = ((Eq.k1_hat/3).*lambda4.*x4.*(1-Eq.m2*x4).*x1.*(1./(Eq.alpha3 + x1)))/Eq.weight1;
         %optCond2 = (lambda1.*Eq.k3.*x1.*(1-Eq.m1*x1).*x4.*(1./(Eq.alpha3+x4)))/Eq.weight2;
         %optCond3 = (lambda3-lambda2).*Eq.db.*E2.*x2/Eq.weight3;
         
@@ -788,7 +788,7 @@ for i=1:1 % 5 mice
         
         
         % Optimality condition
-        %optCond1 = (k1*lambda4.*x4.*(1-Eq.m2*x4).*x1.*(1./(Eq.alpha3 + x1)))/Eq.weight1;
+        %optCond1 = (k1_hat*lambda4.*x4.*(1-Eq.m2*x4).*x1.*(1./(Eq.alpha3 + x1)))/Eq.weight1;
         optCond2 = (lambda1.*Eq.k2.*x1.*(1-Eq.m1*x1).*x4.*(1./(Eq.alpha2+x4)))/Eq.weight2;
         optCond3 = (lambda3-lambda2).*Eq.db.*E2.*x2/Eq.weight3;
 
@@ -976,7 +976,7 @@ end
       'LabelVerticalAlignment', 'middle', 'LineWidth', 1);
     legend('No treatment','Treatment - Type I','Treatment - Type II','Treatment - Type III','Treatment - Type I+III', 'Treatment - Type II+III','location', 'northwest',  'FontSize', 10)
     %title('T(t)','fontweight','normal','fontsize',18)
-    sgtitle('High dose E2 (0.5mg) (with CAF)','fontsize',18)
+    sgtitle('Optimal teeatment - High dose E2 (0.5mg)','fontsize',18)
     xlabel('t','fontweight','normal','fontsize',18)
     ylabel('T(t)','fontweight','normal','fontsize',18)
     grid on

@@ -24,9 +24,9 @@ u1 = interp1(Tu,u1,t);
 u2 = interp1(Tu,u2,t); 
 u3 = interp1(Tu,u3,t); 
 
-R1S = (1-Eq.m1*Tumor)*(Eq.k1*(E2ER/(Eq.alpha1+E2ER)) + (1-u2)*Eq.k2*(CAF2/(Eq.alpha2+CAF2)));
+R1S = (1-Eq.m1*Tumor)*(Eq.k1_hat*(E2ER/(Eq.alpha1+E2ER)) + (1-u2)*Eq.k2*(CAF2/(Eq.alpha2+CAF2)));
 R1R = 0;
-R1I = Tumor*(1-Eq.m1*Tumor)*Eq.k1*(Eq.alpha1/((Eq.alpha1+E2ER)^2));
+R1I = Tumor*(1-Eq.m1*Tumor)*Eq.k1_hat*(Eq.alpha1/((Eq.alpha1+E2ER)^2));
 R1D1 = Tumor*(1-Eq.m1*Tumor)*Eq.k2*(1-u2)*(Eq.alpha2/((Eq.alpha2+CAF2)^2));
 
 R2S = 0;
@@ -41,10 +41,10 @@ R3I = -Eq.mu2 + Eq.dub;
 R3D1 = 0;
 %R3D2 = (Eq.beta*I*Eq.g)/((Eq.g+D2)^2);
 
-R4S = (1-u1)*Eq.k1*CAF2*(1-Eq.m2*CAF2)*(Eq.alpha3/((Eq.alpha3+Tumor)^2));
+R4S = (1-u1)*Eq.k1_hat*CAF2*(1-Eq.m2*CAF2)*(Eq.alpha3/((Eq.alpha3+Tumor)^2));
 R4R = 0;
 R4I = 0;
-R4D1 = (1-u1)*(Eq.k1/3)*(Tumor/((Eq.alpha3+Tumor)^2))*(1-2*Eq.m2*CAF2);
+R4D1 = (1-u1)*(Eq.k1_hat/3)*(Tumor/((Eq.alpha3+Tumor)^2))*(1-2*Eq.m2*CAF2);
 %R4D2 = 0;
 
 % R5S = 0;
