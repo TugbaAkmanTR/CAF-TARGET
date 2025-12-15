@@ -88,15 +88,15 @@ E2 = 0.025;
 
 toll = 1e-5;
 init_Tumor = 0.5;
-init_ER = 2.2e-05;
-init_E2ER = 5.4e-08;
-init_CAF = 1.5;
+init_ER = 1.300000e-04 ;
+init_E2ER = 3.700000e-11;
+init_CAF = 1*init_Tumor;
 
 % Parameters - 5 mice
-Eq.k1_hat = 0.04413;
-Eq.alpha1 = 0.001147;
-Eq.beta = 0.0072;
-Eq.db = 0.23;
+Eq.k1_hat = 4.193333e-02;
+Eq.alpha1 = 4.446667e-05;
+Eq.beta = 6.400000e-03;
+Eq.db = 1.066000e-02;
 
 % Weights in the cost functional
 Eq.weight1 = 1; % omega_S for CD
@@ -108,10 +108,10 @@ Eq.m2=0.001;
 Eq.mu1=0.0042;
 Eq.mu2=0.0125;
 Eq.dub = 0.0417;
-Eq.k2 = 0.1651 ;
-Eq.alpha2 = 13.02;
-Eq.d3 = 69.77;
-Eq.alpha3 = 2.778e+01;
+Eq.k2 = 0.2046667;
+Eq.alpha2 = 21.8413333;
+Eq.d3 = 92.7513333;
+Eq.alpha3 = 16.2820004;
 
 options = odeset('RelTol',1e-6,'AbsTol',1e-6);
 
