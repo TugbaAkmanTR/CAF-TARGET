@@ -90,7 +90,7 @@ toll = 1e-5;
 init_Tumor = 0.5;
 init_ER = 1.300000e-04 ;
 init_E2ER = 3.700000e-11;
-init_CAF = 0.25*init_Tumor;
+init_CAF = 0.3*init_Tumor;
 
 % Parameters - 5 mice
 Eq.k1_hat = 4.193333e-02;

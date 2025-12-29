@@ -85,11 +85,12 @@ y_data_with_CAF2_med_dose_mice5 = [0,0,0,0,0,5.1,4.8,6.3,6.9,8.4,8.1,12.7,14.1,2
 %% Fig.4D - high estrogen
 %Initial conditions
 E2 = 0.1;
+ss = 0.99;
 
 init_Tumor = 0.5;
 init_ER = 1.300000e-04 ;
 init_E2ER = 3.700000e-11;
-init_CAF = 0.25*init_Tumor;
+init_CAF = 0.3*init_Tumor;
 
 % Parameters - 5 mice
 Eq.k1_hat = 4.193333e-02;
@@ -175,7 +176,7 @@ for i=1:1 % 5 mice
     %Type I
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % solve the state eqn forward
-    u1=0*ones(size(Tu_treatment(:,i)))+0.5;
+    u1=0*ones(size(Tu_treatment(:,i)))+ss;
     u2=0*ones(size(Tu_treatment(:,i)));
     u3=0*ones(size(Tu_treatment(:,i)));
 
@@ -192,7 +193,7 @@ for i=1:1 % 5 mice
     %
     %Allocate for uncontrolled case - MUST BE EQUAL TO ZERO!!!!
     u1=0*ones(size(Tu_treatment(:,i)));
-    u2=0*ones(size(Tu_treatment(:,i)))+0.5;
+    u2=0*ones(size(Tu_treatment(:,i)))+ss;
     u3=0*ones(size(Tu_treatment(:,i)));
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -215,7 +216,7 @@ for i=1:1 % 5 mice
     %Allocate for uncontrolled case - MUST BE EQUAL TO ZERO!!!!
     u1=0*ones(size(Tu_treatment(:,i)));
     u2=0*ones(size(Tu_treatment(:,i)));
-    u3=0*ones(size(Tu_treatment(:,i)))+0.5;
+    u3=0*ones(size(Tu_treatment(:,i)))+ss;
 
     % solve the state eqn forward
     [Tx,XCD] = ode15s(@(t,x)stateEq_medE2(t,x,u1,u2,u3,Tu,E2), Tu_treatment(:,i), initx_treatment, options);
@@ -232,9 +233,9 @@ for i=1:1 % 5 mice
     %Solve OCP for Type I + III
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %Allocate for uncontrolled case - MUST BE EQUAL TO ZERO!!!!
-    u1=0*ones(size(Tu_treatment(:,i)))+0.5;
+    u1=0*ones(size(Tu_treatment(:,i)))+ss;
     u2=0*ones(size(Tu_treatment(:,i)));
-    u3=0*ones(size(Tu_treatment(:,i)))+0.5;
+    u3=0*ones(size(Tu_treatment(:,i)))+ss;
 
     % solve the state eqn forward
     [Tx,XCD] = ode15s(@(t,x)stateEq_medE2(t,x,u1,u2,u3,Tu,E2), Tu_treatment(:,i), initx_treatment, options);
@@ -254,8 +255,8 @@ for i=1:1 % 5 mice
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %Allocate for uncontrolled case - MUST BE EQUAL TO ZERO!!!!
     u1=0*ones(size(Tu_treatment(:,i)));
-    u2=0*ones(size(Tu_treatment(:,i)))+0.5;
-    u3=0*ones(size(Tu_treatment(:,i)))+0.5;
+    u2=0*ones(size(Tu_treatment(:,i)))+ss;
+    u3=0*ones(size(Tu_treatment(:,i)))+ss;
 
     % solve the state eqn forward
     [Tx,XCD] = ode15s(@(t,x)stateEq_medE2(t,x,u1,u2,u3,Tu,E2), Tu_treatment(:,i), initx_treatment, options);
@@ -281,6 +282,36 @@ end
 
 %%
 %%Treatment
+figure(400)
+plot(Tu,MCF7_with_CAF2_med_dose(:,1), '-b','LineWidth',5);
+hold on
+plot(Tu_treatment(:,1),MCF7_with_CAF2_med_dose_control_TypeI(:,1), '-o','MarkerIndices', 1:50:length(Tu), 'MarkerSize', 6, 'LineWidth',2);
+hold on
+plot(Tu_treatment(:,1),MCF7_with_CAF2_med_dose_control_TypeII(:,1), '-s','MarkerIndices', 1:50:length(Tu), 'MarkerSize', 6,'LineWidth',2);
+hold on
+plot(Tu_treatment(:,1),MCF7_with_CAF2_med_dose_control_TypeIII(:,1), '-^','MarkerIndices', 1:50:length(Tu), 'MarkerSize', 6,'LineWidth',2);
+hold on
+plot(Tu_treatment(:,1),MCF7_with_CAF2_med_dose_control_TypeI_III(:,1), '-d','MarkerIndices', 1:50:length(Tu), 'MarkerSize', 6,'LineWidth',2);
+hold on
+plot(Tu_treatment(:,1),MCF7_with_CAF2_med_dose_control_TypeII_III(:,1), '-v','MarkerIndices', 1:50:length(Tu), 'MarkerSize', 6,'LineWidth',2);
+hold on
+xline(Tu_treatment(1,1), '--r', 'Treatment starts', 'LabelOrientation', 'horizontal', ...
+    'LabelVerticalAlignment', 'top', 'LineWidth', 2);
+xline(60, '-.b', 'E2 supply ends', 'LabelOrientation', 'horizontal', ...
+    'LabelVerticalAlignment', 'middle', 'LineWidth', 1);
+legend('No treatment','Treatment - Type I','Treatment - Type II','Treatment - Type III','Treatment - Type I+III', 'Treatment - Type II+III','location', 'northwest',  'FontSize', 10)
+%title('T(t)','fontweight','normal','fontsize',18)
+sgtitle('Constant treatment - Medium dose E2 (0.1mg)','fontsize',16)
+xlabel('t','fontweight','normal','fontsize',16)
+ylabel('T(t)','fontweight','normal','fontsize',16)
+grid on
+xlim([0,160])
+ylim([0,20])
+fig = gcf;
+fig.PaperPositionMode = 'auto';
+fig_pos = fig.PaperPosition;
+fig.PaperSize = [fig_pos(3) fig_pos(4)];
+
 figure(412)
 subplot(2,2,1)
 %plot(t_data_med_dose, y_data_with_CAF2_med_dose_mice1, 'sb','LineWidth',2);
@@ -332,7 +363,7 @@ hold on
 xline(Tu_treatment(1,1), '--r', 'LineWidth', 2);
 xline(60, '-.b', 'LineWidth', 1);
 %legend('ID 1 - No treatment','Treatment - Type I', 'location', 'northwest')
-%sgtitle('med dose E2 (0.5mg) (with CAF2)','fontsize',18)
+%sgtitle('med dose E2 (0.1mg) (with CAF2)','fontsize',18)
 %xlabel('t (days)','fontweight','normal','fontsize',18)
 xlabel('t','fontweight','normal','fontsize',18)
 ylabel('ER(t)','fontweight','normal','fontsize',18)

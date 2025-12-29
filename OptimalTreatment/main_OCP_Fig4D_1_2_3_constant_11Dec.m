@@ -85,6 +85,7 @@ y_data_with_CAF2_high_dose = [y_data_with_CAF2_high_dose_mice1; y_data_with_CAF2
 %% Fig.4D - high estrogen
 %Initial conditions
 E2 = 0.5;
+ss = 0.5;
 
 init_Tumor = 0.5;
 init_ER = 1.300000e-04 ;
@@ -180,7 +181,7 @@ for i=1:1 % 5 mice
     %Type I
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % solve the state eqn forward
-    u1=0*ones(size(Tu_treatment(:,i)))+0.5;
+    u1=0*ones(size(Tu_treatment(:,i)))+ss;
     u2=0*ones(size(Tu_treatment(:,i)));
     u3=0*ones(size(Tu_treatment(:,i)));
 
@@ -197,7 +198,7 @@ for i=1:1 % 5 mice
     %
     %Allocate for uncontrolled case - MUST BE EQUAL TO ZERO!!!!
     u1=0*ones(size(Tu_treatment(:,i)));
-    u2=0*ones(size(Tu_treatment(:,i)))+0.5;
+    u2=0*ones(size(Tu_treatment(:,i)))+ss;
     u3=0*ones(size(Tu_treatment(:,i)));
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -220,7 +221,7 @@ for i=1:1 % 5 mice
     %Allocate for uncontrolled case - MUST BE EQUAL TO ZERO!!!!
     u1=0*ones(size(Tu_treatment(:,i)));
     u2=0*ones(size(Tu_treatment(:,i)));
-    u3=0*ones(size(Tu_treatment(:,i)))+0.5;
+    u3=0*ones(size(Tu_treatment(:,i)))+ss;
 
     % solve the state eqn forward
     [Tx,XCD] = ode15s(@(t,x)stateEq_highE2(t,x,u1,u2,u3,Tu,E2), Tu_treatment(:,i), initx_treatment, options);
@@ -237,9 +238,9 @@ for i=1:1 % 5 mice
     %Solve OCP for Type I + III
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %Allocate for uncontrolled case - MUST BE EQUAL TO ZERO!!!!
-    u1=0*ones(size(Tu_treatment(:,i)))+0.5;
+    u1=0*ones(size(Tu_treatment(:,i)))+ss;
     u2=0*ones(size(Tu_treatment(:,i)));
-    u3=0*ones(size(Tu_treatment(:,i)))+0.5;
+    u3=0*ones(size(Tu_treatment(:,i)))+ss;
 
     % solve the state eqn forward
     [Tx,XCD] = ode15s(@(t,x)stateEq_highE2(t,x,u1,u2,u3,Tu,E2), Tu_treatment(:,i), initx_treatment, options);
@@ -259,8 +260,8 @@ for i=1:1 % 5 mice
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %Allocate for uncontrolled case - MUST BE EQUAL TO ZERO!!!!
     u1=0*ones(size(Tu_treatment(:,i)));
-    u2=0*ones(size(Tu_treatment(:,i)))+0.5;
-    u3=0*ones(size(Tu_treatment(:,i)))+0.5;
+    u2=0*ones(size(Tu_treatment(:,i)))+ss;
+    u3=0*ones(size(Tu_treatment(:,i)))+ss;
 
     % solve the state eqn forward
     [Tx,XCD] = ode15s(@(t,x)stateEq_highE2(t,x,u1,u2,u3,Tu,E2), Tu_treatment(:,i), initx_treatment, options);
@@ -286,6 +287,37 @@ end
 
 %%
 %%Treatment
+figure(400)
+plot(Tu,MCF7_with_CAF2_high_dose(:,1), '-b','LineWidth',5);
+hold on
+plot(Tu_treatment(:,1),MCF7_with_CAF2_high_dose_control_TypeI(:,1), '-o','MarkerIndices', 1:50:length(Tu), 'MarkerSize', 6, 'LineWidth',2);
+hold on
+plot(Tu_treatment(:,1),MCF7_with_CAF2_high_dose_control_TypeII(:,1), '-s','MarkerIndices', 1:50:length(Tu), 'MarkerSize', 6,'LineWidth',2);
+hold on
+plot(Tu_treatment(:,1),MCF7_with_CAF2_high_dose_control_TypeIII(:,1), '-^','MarkerIndices', 1:50:length(Tu), 'MarkerSize', 6,'LineWidth',2);
+hold on
+plot(Tu_treatment(:,1),MCF7_with_CAF2_high_dose_control_TypeI_III(:,1), '-d','MarkerIndices', 1:50:length(Tu), 'MarkerSize', 6,'LineWidth',2);
+hold on
+plot(Tu_treatment(:,1),MCF7_with_CAF2_high_dose_control_TypeII_III(:,1), '-v','MarkerIndices', 1:50:length(Tu), 'MarkerSize', 6,'LineWidth',2);
+hold on
+xline(Tu_treatment(1,1), '--r', 'Treatment starts', 'LabelOrientation', 'horizontal', ...
+    'LabelVerticalAlignment', 'top', 'LineWidth', 2);
+xline(60, '-.b', 'E2 supply ends', 'LabelOrientation', 'horizontal', ...
+    'LabelVerticalAlignment', 'middle', 'LineWidth', 1);
+legend('No treatment','Treatment - Type I','Treatment - Type II','Treatment - Type III','Treatment - Type I+III', 'Treatment - Type II+III','location', 'northwest',  'FontSize', 10)
+%title('T(t)','fontweight','normal','fontsize',18)
+sgtitle('Constant treatment - High dose E2 (0.5mg)','fontsize',16)
+xlabel('t','fontweight','normal','fontsize',16)
+ylabel('T(t)','fontweight','normal','fontsize',16)
+grid on
+xlim([0,160])
+ylim([0,100])
+fig = gcf;
+fig.PaperPositionMode = 'auto';
+fig_pos = fig.PaperPosition;
+fig.PaperSize = [fig_pos(3) fig_pos(4)];
+
+
 figure(412)
 subplot(2,2,1)
 %plot(t_data_high_dose, y_data_with_CAF2_high_dose_mice1, 'sb','LineWidth',2);
