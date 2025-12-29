@@ -8,34 +8,34 @@ EQUATION:
 ;initial conditions:
 t_0 = 0    ;this should be uncommented if the initial time is 0 for all subjects
 T1_0 = 0.5
-ER1_0 = 2.2e-05
-E2ER1_0 = 5.4e-08
+ER1_0 = 1.300000e-04 
+E2ER1_0 = 3.700000e-11
 CAF21_0 = 1.5
 T2_0 = 0.5
-ER2_0 = 2.2e-05
-E2ER2_0 = 5.4e-08
+ER2_0 = 1.300000e-04 
+E2ER2_0 = 3.700000e-11
 CAF22_0 = 1.5
 T3_0 = 0.5
-ER3_0 = 2.2e-05
-E2ER3_0 = 5.4e-08
+ER3_0 = 1.300000e-04 
+E2ER3_0 = 3.700000e-11
 CAF23_0 = 1.5
 
-k1_hat = 0.04413
-alpha1 = 0.001147
-beta = 0.0072
-db = 0.23
+k1_hat = 4.193333e-02
+alpha1 = 4.446667e-05
+beta = 6.400000e-03
+db = 1.066000e-02
 
 ;E2 is given for 60 days
 if t<=60
 ;Low E2
-  RHS12 = beta*(1/(1+d3*CAF21)) - 0.0042*ER1 - db*0.5*ER1 + 0.0417*E2ER1
-  RHS13 = -0.0125*E2ER1 + db*0.5*ER1 - 0.0417*E2ER1
+  RHS12 = beta*(1/(1+d3*CAF21)) - 0.0042*ER1 - db*0.025*ER1 + 0.0417*E2ER1
+  RHS13 = -0.0125*E2ER1 + db*0.025*ER1 - 0.0417*E2ER1
   ;Med E2
   RHS16 = beta*(1/(1+d3*CAF22)) - 0.0042*ER2 - db*0.1*ER2 + 0.0417*E2ER2
   RHS17 = -0.0125*E2ER2 + db*0.1*ER2 - 0.0417*E2ER2
   ;High E2
-  RHS20 = beta*(1/(1+d3*CAF23)) - 0.0042*ER3 - db*0.025*ER3 + 0.0417*E2ER3
-  RHS21 = -0.0125*E2ER3 + db*0.025*ER3 - 0.0417*E2ER3
+  RHS20 = beta*(1/(1+d3*CAF23)) - 0.0042*ER3 - db*0.5*ER3 + 0.0417*E2ER3
+  RHS21 = -0.0125*E2ER3 + db*0.5*ER3 - 0.0417*E2ER3
 else
 ;Low E2
   RHS12 = beta*(1/(1+d3*CAF21)) - 0.0042*ER1 - db*0*ER1 + 0.0417*E2ER1

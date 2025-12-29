@@ -20,14 +20,14 @@ E2ER3_0 = E2ER0
 ;E2 is given for 60 days
 if t<=60
 ;Low E2
-  RHS2 = beta - 0.0042*ER1 - db*0.5*ER1 + 0.0417*E2ER1
-  RHS3 = -0.0125*E2ER1 + db*0.5*ER1 - 0.0417*E2ER1
+  RHS2 = beta - 0.0042*ER1 - db*0.025*ER1 + 0.0417*E2ER1
+  RHS3 = -0.0125*E2ER1 + db*0.025*ER1 - 0.0417*E2ER1
   ;Med E2
   RHS5 = beta - 0.0042*ER2 - db*0.1*ER2 + 0.0417*E2ER2
   RHS6 = -0.0125*E2ER2 + db*0.1*ER2 - 0.0417*E2ER2
   ;High E2
-  RHS8 = beta - 0.0042*ER3 - db*0.025*ER3 + 0.0417*E2ER3
-  RHS9 = -0.0125*E2ER3 + db*0.025*ER3 - 0.0417*E2ER3
+  RHS8 = beta - 0.0042*ER3 - db*0.5*ER3 + 0.0417*E2ER3
+  RHS9 = -0.0125*E2ER3 + db*0.5*ER3 - 0.0417*E2ER3
 else
 ;Low E2
   RHS2 = beta - 0.0042*ER1 - db*0*ER1 + 0.0417*E2ER1
