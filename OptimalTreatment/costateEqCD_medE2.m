@@ -1,10 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% CoState equation for CD
+% CoState equation 
 %
-% Author: Tuğba Akman Date: Jan 2023
+% Author: Tuğba Akman Date: Jan 2026
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function dp = costateEqCD(t,p,u1,u2,u3,Tu,x1,x2,x3,x4,xt,E2)
+function dp = costateEqCD_medE2(t,p,u1,u2,u3,Tu,x1,x2,x3,x4,xt,E2)
 
 global Eq
 
@@ -33,25 +33,16 @@ R2S = 0;
 R2R = -Eq.mu1 - Eq.db*0.1*(1-u3);
 R2I = Eq.dub;
 R2D1 = -Eq.beta*Eq.d3*(1/((1 + Eq.d3*CAF2)^2));
-%R2D2 = 0;
 
 R3S = 0;
 R3R = Eq.db*0.1*(1-u3);
 R3I = -Eq.mu2 + Eq.dub;
 R3D1 = 0;
-%R3D2 = (Eq.beta*I*Eq.g)/((Eq.g+D2)^2);
 
 R4S = (1-u1)*Eq.k1_hat*CAF2*(1-Eq.m2*CAF2)*(Eq.alpha3/((Eq.alpha3+Tumor)^2));
 R4R = 0;
 R4I = 0;
 R4D1 = (1-u1)*(Eq.k1_hat/3)*(Tumor/((Eq.alpha3+Tumor)^2))*(1-2*Eq.m2*CAF2);
-%R4D2 = 0;
-
-% R5S = 0;
-% R5R = 0;
-% R5I = 0;
-% R5D1 = 0;
-% R5D2 = -Eq.gamma2;
 
 dp(1) = -p(1).*R1S - p(2).*R2S - p(3).*R3S - p(4).*R4S -1;
 
@@ -60,7 +51,6 @@ dp(2) = -p(1).*R1R - p(2).*R2R - p(3).*R3R - p(4).*R4R;
 dp(3) = -p(1).*R1I - p(2).*R2I - p(3).*R3I - p(4).*R4I;
   
 dp(4) = -p(1).*R1D1 - p(2).*R2D1 - p(3).*R3D1 - p(4).*R4D1;
- 
-%dp(5) = -p(1).*R1D2 - p(2).*R2D2 - p(3).*R3D2 - p(4).*R4D2 - p(5)*R5D2;
+
 
 end
