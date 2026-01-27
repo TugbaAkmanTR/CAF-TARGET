@@ -1,10 +1,6 @@
-function model = CAF2()
-    % HIV provides the GenSSI implementation of model for HIC dynamics
-    % described by
-    % 
-    %    Meshkat et al. (2014). On finding and using identifiable parameter
-    %    combinations in nonlinear dynamic Systems Biology models and
-    %    COMBOS: a novel Web implementation, PLoS ONE, 9, e110261.
+function model = CAF2_with_denom_v2()
+    % CAF2_with_denom_v2 provides the GenSSI implementation of model for cancer dynamics
+    % with CAFs 
 
     % Symbolic variables
 	syms alpha2 d3 k2 alpha3 u1 u2 u3
