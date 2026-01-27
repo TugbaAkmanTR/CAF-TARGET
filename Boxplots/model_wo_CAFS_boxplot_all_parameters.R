@@ -1,6 +1,6 @@
 set.seed(43)
 
-#wo CAFs
+#Data for the model without CAFs
 data_wo_CAF <- matrix(c(
   111,	0.046,	0.00002,	0.0064,	0.011,	0.00013,	0.000000000037,
   112,	0.039,	0.00001,	0.0064,	0.011,	0.00013,	0.000000000037,
@@ -22,6 +22,7 @@ data_wo_CAF <- matrix(c(
 colnames(data_wo_CAF) <- c("ID",	"k1_hat","alpha1","beta","db","ER0","E2ER0")
 data_mean=colMeans(data_wo_CAF)
 
+#Rename IDs for the data based on E2 level
 data_wo_CAF_v2 <- matrix(c(
   "L",	0.046,	0.00002,	0.0064,	0.011,	0.00013,	0.000000000037,
   "L",	0.039,	0.00001,	0.0064,	0.011,	0.00013,	0.000000000037,
@@ -72,7 +73,7 @@ ggplot(df_long, aes(x = E2, y = value, fill = E2)) +
        y = "Value") +
   theme_bw()
 
-### k1hat and alpha1 #################
+### Implement for k1hat and alpha1 #################
 data_wo_CAF_v2 <- matrix(c(
   "L",	0.046,	0.00002,	0.0064,	0.011,	0.00013,	0.000000000037,
   "L",	0.039,	0.00001,	0.0064,	0.011,	0.00013,	0.000000000037,
@@ -121,7 +122,10 @@ ggplot(df_long, aes(x = E2, y = value, fill = E2)) +
        x = "E2",
        y = "Value") +
   theme_bw()
+
 ################
+#Data for the model with CAFs
+
 data_with_CAF <- matrix(c(
 211,	0.24,	20.82,	8.83,	0.00000059,
 212,	0.18,	21.49,	1.7,	0.00000067,
@@ -143,6 +147,7 @@ data_with_CAF <- matrix(c(
 colnames(data_with_CAF) <- c("E2", "k2", "alpha2", "d3", "alpha3")
 data_mean=colMeans(data_with_CAF)
 
+#Rename IDs for the data based on E2 level
 data_with_CAF <- matrix(c(
   "L",	0.24,	20.82,	8.83,	0.00000059,
   "L",	0.18,	21.49,	1.7,	0.00000067,
