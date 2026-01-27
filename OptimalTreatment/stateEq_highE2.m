@@ -4,7 +4,7 @@
 % Author: Tuğba Akman Date: Jan 2026
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function dy = model_for_model_wo_CAFs_high_med_low(t,y,u1,u2,u3,Tu,E2)
+function dy = stateEq_highE2(t,y,u1,u2,u3,Tu,E2)
 
 global Eq
 
@@ -38,4 +38,5 @@ dy(4) = (1-u1)*(Eq.k1_hat/3)*CAF21*(1-(0.001*CAF21))*(T1/(Eq.alpha3 + T1));
 
 end
 %%
+
 
