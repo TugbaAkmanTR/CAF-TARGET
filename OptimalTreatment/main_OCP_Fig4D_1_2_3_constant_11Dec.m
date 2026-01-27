@@ -224,7 +224,7 @@ ER_with_CAF2_high_dose_control_TypeII_III(:,i) = XCD(:,2);
 E2ER_with_CAF2_high_dose_control_TypeII_III(:,i) = XCD(:,3);
 CAF2_with_CAF2_high_dose_control_TypeII_III(:,i) = XCD(:,4);
 
-[Ju2u3,P1,P2]=cost_u1_u3(Tu_treatment(:,i),MCF7_with_CAF2_high_dose_control_TypeII_III,u2,u3);
+[Ju2u3,P1,P2]=cost_u2_u3(Tu_treatment(:,i),MCF7_with_CAF2_high_dose_control_TypeII_III,u2,u3);
 fprintf('Type II+III \n');
 fprintf('Tumor size = %.3f, Control = %.3f, J = %.3f \n', P1,P2,Ju2u3);
 
@@ -418,6 +418,7 @@ P1 = trapz(Tx,X(:,1));
 P2 = Eq.weight3*0.5*trapz(Tx,u3.^2);
 Ju3=P1 + P2;
 end
+
 
 
 
