@@ -7,10 +7,10 @@ Codes and data to reproduce the results and figures in the preprint published in
 # Practical guide
 
 ## identifiability/ (Structural identifiability)
-  runCAF2_with_denom_v2.m and runCAF2_wo_CAF_with_denom_v2.m must be run. These codes run with GenSSI 2.0 is a software toolbox (https://github.com/genssi-developer/GenSSI).
+  runCAF2_with_denom_v2.m and runCAF2_wo_CAF_with_denom_v2.m must be run. These codes work with GenSSI 2.0 software toolbox (https://github.com/genssi-developer/GenSSI).
 
 ## Monolix_after_Dec2025/ (Parameter estimation)
-  Monolix 2024R1 has been used for model calibration (https://monolixsuite.slp-software.com/getting-started/2024R1/download). Model_MCF7_wo_CAF2_high_med_low.txt and Data_MCF7_wo_CAF2_high_med_low_v2.txt, Model_MCF7_with_CAF2_high_med_low.txt and Data_MCF7_with_CAF2_high_med_low.txt must be upload for model 1 and 5, respectively. Adjust the parameter intervals and decided the fixed and random effects. Then, run the code.
+  Monolix 2024R1 has been used for model calibration (https://monolixsuite.slp-software.com/getting-started/2024R1/download). Model_MCF7_wo_CAF2_high_med_low.txt and Data_MCF7_wo_CAF2_high_med_low_v2.txt, Model_MCF7_with_CAF2_high_med_low.txt and Data_MCF7_with_CAF2_high_med_low.txt must be uploaded for model 1 and 5, respectively. Adjust the parameter intervals and decide the fixed and random effects. Then, run the code.
 
 ## Boxplots/ (Boxplots)
   Boxplots can be reproduced by running the R file.
